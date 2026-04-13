@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snake Venom — Biochemistry &amp; Molecular Structures</title>
+  <meta name="description" content="An interactive chemistry showcase exploring the biochemistry, molecular structures, and medical applications of snake venom." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <!-- 3Dmol.js for interactive molecular visualization -->
+  <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+</head>
+<body>
+  <!-- ======================== NAV ======================== -->
+  <nav id="main-nav" class="nav">
+    <div class="nav__inner container">
+      <a href="#" class="nav__logo" id="nav-logo">
+        <span class="nav__logo-icon">🧬</span>
+        <span class="nav__logo-text">Snake Venom</span>
+      </a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#overview" class="nav__link">Overview</a></li>
+        <li><a href="#composition" class="nav__link">Composition</a></li>
+        <li><a href="#models" class="nav__link">3D Models</a></li>
+        <li><a href="#mechanism" class="nav__link">Mechanism</a></li>
+        <li><a href="#medicine" class="nav__link nav__link--cta">Medical Uses</a></li>
+      </ul>
+      <button class="nav__toggle" id="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======================== HERO ======================== -->
+  <header id="hero" class="hero">
+    <div class="hero__bg">
+      <div class="hero__orb hero__orb--1"></div>
+      <div class="hero__orb hero__orb--2"></div>
+      <div class="hero__orb hero__orb--3"></div>
+      <div class="hero__grid"></div>
+    </div>
+    <div class="hero__content container">
+      <div class="hero__badge" id="hero-badge">
+        <span class="hero__badge-dot"></span>
+        Chemistry Project
+      </div>
+      <h1 class="hero__title" id="hero-title">
+        The Biochemistry of<br />
+        <span class="hero__title--gradient">Snake Venom</span>
+      </h1>
+      <p class="hero__subtitle" id="hero-subtitle">
+        An interactive exploration of the complex cocktail of proteins, enzymes, and toxins that make snake venom one of nature's most sophisticated biochemical weapons.
+      </p>
+      <div class="hero__actions" id="hero-actions">
+        <a href="#models" class="btn btn--primary" id="hero-cta-primary">
+          Explore 3D Models
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#overview" class="btn btn--glass" id="hero-cta-secondary">
+          Learn More
+        </a>
+      </div>
+      <div class="hero__stats" id="hero-stats">
+        <div class="hero__stat">
+          <span class="hero__stat-value" data-count="600">0</span><span class="hero__stat-suffix">+</span>
+          <span class="hero__stat-label">Venomous Species</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-value" data-count="100">0</span><span class="hero__stat-suffix">+</span>
+          <span class="hero__stat-label">Unique Proteins</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-value" data-count="25">0</span>
+          <span class="hero__stat-label">Enzyme Families</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero__scroll" id="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- ======================== OVERVIEW ======================== -->
+  <section id="overview" class="overview section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Introduction</span>
+        <h2 class="section__title">What is <span class="text--gradient">Snake Venom</span>?</h2>
+        <p class="section__desc">
+          Snake venom is a highly modified form of saliva — a complex mixture of proteins, peptides, enzymes, and non-protein molecules produced by specialized glands. It has evolved over millions of years to subdue prey, aid digestion, and serve as a defense mechanism.
+        </p>
+      </div>
+      <div class="overview__grid">
+        <div class="overview__card overview__card--main" id="overview-card-main">
+          <div class="overview__card-icon">🧪</div>
+          <h3>A Biochemical Cocktail</h3>
+          <p>Venom is not a single substance — it's a complex mixture containing <strong>20 to over 100 distinct proteins and peptides</strong>. These molecules work synergistically: some paralyze nerve signaling, others destroy cell membranes or prevent blood from clotting. The exact composition varies dramatically between species, populations, and even individual snakes, making each venom a unique biochemical fingerprint shaped by millions of years of natural selection.</p>
+        </div>
+        <div class="overview__card" id="overview-card-1">
+          <div class="overview__card-icon">⚗️</div>
+          <h3>Dry Weight Composition</h3>
+          <p>Approximately <strong>90–95%</strong> of venom's dry weight consists of proteins and polypeptides. The remainder includes free amino acids, nucleotides, carbohydrates, lipids, and metallic ions like zinc and calcium that serve as enzyme cofactors.</p>
+        </div>
+        <div class="overview__card" id="overview-card-2">
+          <div class="overview__card-icon">🔬</div>
+          <h3>Evolutionary Origins</h3>
+          <p>Venom proteins evolved from normal body proteins through <strong>gene duplication and neofunctionalization</strong>. For example, phospholipase A₂ — a digestive enzyme — was recruited into venom glands where it evolved potent toxic properties.</p>
+        </div>
+        <div class="overview__card" id="overview-card-3">
+          <div class="overview__card-icon">🐍</div>
+          <h3>Delivery System</h3>
+          <p>Venom is synthesized in modified parotid (salivary) glands and delivered through hollow or grooved fangs. Muscle contractions around the gland control the volume injected — snakes can even deliver <strong>"dry bites"</strong> with no venom.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== COMPOSITION ======================== -->
+  <section id="composition" class="composition section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Toxin Families</span>
+        <h2 class="section__title">Key <span class="text--gradient">Components</span></h2>
+        <p class="section__desc">
+          Snake venom toxins are classified by their molecular targets and biological effects. Here are the major families found across venomous species.
+        </p>
+      </div>
+      <div class="composition__grid">
+
+        <div class="comp-card" id="comp-1">
+          <div class="comp-card__number">01</div>
+          <div class="comp-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="comp-card__title">Neurotoxins</h3>
+          <p class="comp-card__desc">Target the nervous system by blocking neuromuscular transmission. <strong>α-Bungarotoxin</strong> from kraits binds irreversibly to nicotinic acetylcholine receptors (nAChR), causing paralysis and respiratory failure.</p>
+          <div class="comp-card__formula">
+            <span class="formula-label">Target:</span> Nicotinic AChR
+          </div>
+          <div class="comp-card__tags">
+            <span class="tag">Elapidae</span>
+            <span class="tag">Paralysis</span>
+          </div>
+        </div>
+
+        <div class="comp-card" id="comp-2">
+          <div class="comp-card__number">02</div>
+          <div class="comp-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="4"/></svg>
+          </div>
+          <h3 class="comp-card__title">Phospholipases A₂ (PLA₂)</h3>
+          <p class="comp-card__desc">Catalyze the hydrolysis of phospholipids in cell membranes at the <em>sn-2</em> position. This destroys cell integrity, releases arachidonic acid, and triggers inflammation. PLA₂ enzymes require <strong>Ca²⁺</strong> as a cofactor.</p>
+          <div class="comp-card__formula">
+            <span class="formula-label">Reaction:</span> Phospholipid → Lysophospholipid + Fatty Acid
+          </div>
+          <div class="comp-card__tags">
+            <span class="tag">Ca²⁺ Dependent</span>
+            <span class="tag">Hemolysis</span>
+          </div>
+        </div>
+
+        <div class="comp-card" id="comp-3">
+          <div class="comp-card__number">03</div>
+          <div class="comp-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3 class="comp-card__title">Metalloproteinases (SVMPs)</h3>
+          <p class="comp-card__desc">Zinc-dependent enzymes that degrade extracellular matrix proteins including collagen and fibronectin. Cause <strong>hemorrhage, tissue necrosis, and edema</strong> by destroying blood vessel walls and basement membranes.</p>
+          <div class="comp-card__formula">
+            <span class="formula-label">Cofactor:</span> Zn²⁺ (catalytic site)
+          </div>
+          <div class="comp-card__tags">
+            <span class="tag">Viperidae</span>
+            <span class="tag">Hemorrhagic</span>
+          </div>
+        </div>
+
+        <div class="comp-card" id="comp-4">
+          <div class="comp-card__number">04</div>
+          <div class="comp-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="comp-card__title">Serine Proteases</h3>
+          <p class="comp-card__desc">Disrupt the blood coagulation cascade by mimicking or inhibiting clotting factors such as <strong>thrombin and Factor X</strong>. Some activate prothrombin while others are anticoagulant, leading to uncontrolled bleeding or disseminated intravascular coagulation (DIC).</p>
+          <div class="comp-card__formula">
+            <span class="formula-label">Mechanism:</span> Catalytic triad (His-Asp-Ser)
+          </div>
+          <div class="comp-card__tags">
+            <span class="tag">Coagulopathy</span>
+            <span class="tag">DIC</span>
+          </div>
+        </div>
+
+        <div class="comp-card" id="comp-5">
+          <div class="comp-card__number">05</div>
+          <div class="comp-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <h3 class="comp-card__title">Three-Finger Toxins (3FTx)</h3>
+          <p class="comp-card__desc">Small proteins (~60–74 amino acids) with a characteristic <strong>three β-strand loop</strong> structure stabilized by 4–5 disulfide bonds. They target diverse receptors — from ion channels to muscarinic receptors — and are the dominant component of elapid venoms.</p>
+          <div class="comp-card__formula">
+            <span class="formula-label">Structure:</span> 3 β-loops, 4–5 S–S bonds
+          </div>
+          <div class="comp-card__tags">
+            <span class="tag">Elapidae</span>
+            <span class="tag">Multi-target</span>
+          </div>
+        </div>
+
+        <div class="comp-card" id="comp-6">
+          <div class="comp-card__number">06</div>
+          <div class="comp-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          </div>
+          <h3 class="comp-card__title">L-Amino Acid Oxidases (LAAOs)</h3>
+          <p class="comp-card__desc">Flavoenzymes that catalyze the oxidative deamination of L-amino acids, producing <strong>H₂O₂ (hydrogen peroxide)</strong> as a byproduct. The H₂O₂ induces apoptosis, edema, and has antibacterial and antiparasitic effects.</p>
+          <div class="comp-card__formula">
+            <span class="formula-label">Byproduct:</span> H₂O₂ + NH₃ + α-keto acid
+          </div>
+          <div class="comp-card__tags">
+            <span class="tag">FAD Cofactor</span>
+            <span class="tag">Cytotoxic</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== 3D MODELS ======================== -->
+  <section id="models" class="models section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Molecular Visualization</span>
+        <h2 class="section__title">Interactive <span class="text--gradient">3D Structures</span></h2>
+        <p class="section__desc">
+          Explore three key venom proteins in an interactive 3D viewer. Rotate, zoom, and examine the molecular architecture that gives each toxin its deadly function.
+        </p>
+      </div>
+
+      <div class="models__tabs" id="model-tabs">
+        <button class="models__tab active" data-model="cobratoxin" id="tab-cobratoxin">
+          <span class="models__tab-icon">🐍</span>
+          <span class="models__tab-name">α-Cobratoxin</span>
+          <span class="models__tab-type">Neurotoxin</span>
+        </button>
+        <button class="models__tab" data-model="pla2" id="tab-pla2">
+          <span class="models__tab-icon">🔥</span>
+          <span class="models__tab-name">Phospholipase A₂</span>
+          <span class="models__tab-type">Myotoxin</span>
+        </button>
+        <button class="models__tab" data-model="crotamine" id="tab-crotamine">
+          <span class="models__tab-icon">⚡</span>
+          <span class="models__tab-name">Crotamine</span>
+          <span class="models__tab-type">Myotoxin / CPP</span>
+        </button>
+      </div>
+
+      <div class="models__viewer-wrapper">
+        <div class="models__viewer" id="models-viewer">
+          <div class="models__canvas" id="model-canvas" style="width:100%; height:100%; position:relative;"></div>
+          <div class="models__loading" id="model-loading">
+            <div class="models__spinner"></div>
+            <span>Loading structure…</span>
+          </div>
+        </div>
+
+        <div class="models__info" id="models-info">
+          <!-- Cobratoxin info (default) -->
+          <div class="models__info-panel active" id="info-cobratoxin">
+            <h3>α-Cobratoxin</h3>
+            <p class="models__info-source">Naja kaouthia (Monocled Cobra)</p>
+            <div class="models__info-detail">
+              <div class="info-row"><span class="info-label">PDB ID</span><span class="info-value mono">2CTX</span></div>
+              <div class="info-row"><span class="info-label">Residues</span><span class="info-value">71 amino acids</span></div>
+              <div class="info-row"><span class="info-label">Mass</span><span class="info-value">~7,800 Da</span></div>
+              <div class="info-row"><span class="info-label">Disulfide Bonds</span><span class="info-value">5 (S–S)</span></div>
+              <div class="info-row"><span class="info-label">Family</span><span class="info-value">Three-Finger Toxin</span></div>
+              <div class="info-row"><span class="info-label">Target</span><span class="info-value">nAChR (α₁ subunit)</span></div>
+            </div>
+            <p class="models__info-desc">
+              A postsynaptic neurotoxin that binds with <strong>near-irreversible affinity</strong> to nicotinic acetylcholine receptors at the neuromuscular junction. Blocks nerve impulse transmission, causing flaccid paralysis. Its three-finger fold — three β-strand loops extending from a central core stabilized by 5 disulfide bridges — is a hallmark of elapid toxins.
+            </p>
+          </div>
+
+          <!-- PLA2 info -->
+          <div class="models__info-panel" id="info-pla2">
+            <h3>Phospholipase A₂</h3>
+            <p class="models__info-source">Daboia russelii (Russell's Viper)</p>
+            <div class="models__info-detail">
+              <div class="info-row"><span class="info-label">PDB ID</span><span class="info-value mono">1FB2</span></div>
+              <div class="info-row"><span class="info-label">Residues</span><span class="info-value">~122 amino acids</span></div>
+              <div class="info-row"><span class="info-label">Mass</span><span class="info-value">~13,500 Da</span></div>
+              <div class="info-row"><span class="info-label">Cofactor</span><span class="info-value">Ca²⁺ ion</span></div>
+              <div class="info-row"><span class="info-label">Family</span><span class="info-value">Group II PLA₂</span></div>
+              <div class="info-row"><span class="info-label">Target</span><span class="info-value">Cell membranes (sn-2)</span></div>
+            </div>
+            <p class="models__info-desc">
+              Catalyzes hydrolysis of the <em>sn-2</em> ester bond of glycerophospholipids. This destroys cell membrane integrity, releasing fatty acids and lysophospholipids. Requires a <strong>Ca²⁺ ion</strong> in its active site. Beyond membrane destruction, venom PLA₂ enzymes display neurotoxic, myotoxic, and anticoagulant activities through receptor-mediated mechanisms independent of catalysis.
+            </p>
+          </div>
+
+          <!-- Crotamine info -->
+          <div class="models__info-panel" id="info-crotamine">
+            <h3>Crotamine</h3>
+            <p class="models__info-source">Crotalus durissus (South American Rattlesnake)</p>
+            <div class="models__info-detail">
+              <div class="info-row"><span class="info-label">PDB ID</span><span class="info-value mono">1H5O</span></div>
+              <div class="info-row"><span class="info-label">Residues</span><span class="info-value">42 amino acids</span></div>
+              <div class="info-row"><span class="info-label">Mass</span><span class="info-value">~4,880 Da</span></div>
+              <div class="info-row"><span class="info-label">Disulfide Bonds</span><span class="info-value">3 (S–S)</span></div>
+              <div class="info-row"><span class="info-label">Family</span><span class="info-value">β-Defensin-like</span></div>
+              <div class="info-row"><span class="info-label">Target</span><span class="info-value">Nav1.4 Na⁺ channels</span></div>
+            </div>
+            <p class="models__info-desc">
+              A small, basic myotoxin (pI ~10.3) that targets voltage-gated sodium channels (Nav1.4) in skeletal muscle, causing <strong>spastic paralysis</strong> (distinct from the flaccid paralysis of neurotoxins). Structurally similar to β-defensins. Its highly cationic nature allows it to penetrate cell membranes, making it a natural <strong>cell-penetrating peptide (CPP)</strong> — now studied for drug delivery applications.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="models__controls" id="model-controls">
+        <span class="models__hint">🖱️ Left-click + drag to rotate &nbsp;•&nbsp; Scroll to zoom &nbsp;•&nbsp; Right-click + drag to pan</span>
+        <div class="models__style-btns">
+          <button class="models__style-btn active" data-style="cartoon" id="style-cartoon">Cartoon</button>
+          <button class="models__style-btn" data-style="stick" id="style-stick">Stick</button>
+          <button class="models__style-btn" data-style="sphere" id="style-sphere">Sphere</button>
+          <button class="models__style-btn" data-style="surface" id="style-surface">Surface</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== MECHANISM ======================== -->
+  <section id="mechanism" class="mechanism section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Pathophysiology</span>
+        <h2 class="section__title">How Venom <span class="text--gradient">Attacks</span></h2>
+        <p class="section__desc">
+          Snake venom employs multiple simultaneous strategies to overwhelm the victim's biological systems. Here's how each class of toxin damages the body.
+        </p>
+      </div>
+      <div class="mechanism__timeline">
+
+        <div class="mechanism__step" id="mech-1">
+          <div class="mechanism__step-marker">
+            <span class="mechanism__step-num">1</span>
+          </div>
+          <div class="mechanism__step-content">
+            <h3>Injection &amp; Spreading</h3>
+            <p>Venom is injected through hollow fangs into subcutaneous tissue. <strong>Hyaluronidase</strong> — the "spreading factor" — breaks down hyaluronic acid in the extracellular matrix, allowing toxins to rapidly diffuse through tissues and enter the bloodstream.</p>
+            <div class="mechanism__step-tag">Spreading Factor • Hyaluronidase</div>
+          </div>
+        </div>
+
+        <div class="mechanism__step" id="mech-2">
+          <div class="mechanism__step-marker">
+            <span class="mechanism__step-num">2</span>
+          </div>
+          <div class="mechanism__step-content">
+            <h3>Neuromuscular Blockade</h3>
+            <p>Neurotoxins reach the neuromuscular junction within minutes. <strong>Presynaptic toxins</strong> (β-neurotoxins like β-bungarotoxin) destroy nerve terminals by degrading membrane phospholipids. <strong>Postsynaptic toxins</strong> (α-neurotoxins like cobratoxin) block acetylcholine receptors. Both pathways lead to paralysis.</p>
+            <div class="mechanism__step-tag">α-Neurotoxins • β-Neurotoxins</div>
+          </div>
+        </div>
+
+        <div class="mechanism__step" id="mech-3">
+          <div class="mechanism__step-marker">
+            <span class="mechanism__step-num">3</span>
+          </div>
+          <div class="mechanism__step-content">
+            <h3>Hemostatic Disruption</h3>
+            <p>Serine proteases and metalloproteinases attack the coagulation cascade from multiple angles. Some <strong>activate prothrombin</strong> (consuming clotting factors → consumptive coagulopathy), while others directly <strong>degrade fibrinogen</strong> or inhibit platelet aggregation, leading to uncontrollable hemorrhage.</p>
+            <div class="mechanism__step-tag">SVMPs • Serine Proteases • Coagulopathy</div>
+          </div>
+        </div>
+
+        <div class="mechanism__step" id="mech-4">
+          <div class="mechanism__step-marker">
+            <span class="mechanism__step-num">4</span>
+          </div>
+          <div class="mechanism__step-content">
+            <h3>Tissue Destruction</h3>
+            <p>PLA₂ enzymes and cytotoxins destroy cell membranes through enzymatic hydrolysis and pore formation. Metalloproteinases degrade the extracellular matrix. Together, they cause <strong>myonecrosis</strong> (muscle death), <strong>dermonecrosis</strong>, and massive local tissue damage that begins at the bite site and spreads.</p>
+            <div class="mechanism__step-tag">PLA₂ • Cytotoxins • Necrosis</div>
+          </div>
+        </div>
+
+        <div class="mechanism__step" id="mech-5">
+          <div class="mechanism__step-marker">
+            <span class="mechanism__step-num">5</span>
+          </div>
+          <div class="mechanism__step-content">
+            <h3>Systemic Organ Failure</h3>
+            <p>As toxins circulate, they target distant organs. Nephrotoxins cause <strong>acute kidney injury</strong> via myoglobin accumulation. Cardiotoxins disrupt cardiac ion channels. If untreated, the combined assault leads to multi-organ failure — respiratory collapse (from paralysis), renal failure, and cardiovascular shock.</p>
+            <div class="mechanism__step-tag">Renal Failure • Cardiotoxicity • Shock</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== MEDICAL APPLICATIONS ======================== -->
+  <section id="medicine" class="medicine section">
+    <div class="container">
+      <div class="section__header">
+        <span class="section__label">Biomedical Research</span>
+        <h2 class="section__title">From Venom to <span class="text--gradient">Medicine</span></h2>
+        <p class="section__desc">
+          The same toxic properties that make venom deadly are being harnessed by scientists to develop life-saving treatments and research tools.
+        </p>
+      </div>
+      <div class="medicine__grid">
+
+        <div class="medicine__card" id="med-1">
+          <div class="medicine__card-header">
+            <span class="medicine__card-emoji">💊</span>
+            <div>
+              <h3>Captopril (ACE Inhibitor)</h3>
+              <span class="medicine__card-origin">From: Bothrops jararaca</span>
+            </div>
+          </div>
+          <p>The first ACE inhibitor, developed from bradykinin-potentiating peptides found in pit viper venom. <strong>Captopril</strong> revolutionized the treatment of hypertension and heart failure. It inhibits angiotensin-converting enzyme, preventing vasoconstriction.</p>
+          <div class="medicine__card-impact">
+            <span class="impact-label">Impact:</span> Used by millions worldwide for blood pressure control
+          </div>
+        </div>
+
+        <div class="medicine__card" id="med-2">
+          <div class="medicine__card-header">
+            <span class="medicine__card-emoji">🩸</span>
+            <div>
+              <h3>Eptifibatide (Integrilin)</h3>
+              <span class="medicine__card-origin">From: Sistrurus miliarius (Pygmy Rattlesnake)</span>
+            </div>
+          </div>
+          <p>A synthetic cyclic peptide derived from barbourin, a disintegrin in pygmy rattlesnake venom. It blocks the <strong>glycoprotein IIb/IIIa receptor</strong> on platelets, preventing aggregation. Used during heart attacks and coronary interventions to prevent blood clots.</p>
+          <div class="medicine__card-impact">
+            <span class="impact-label">Impact:</span> Standard of care in acute coronary syndrome
+          </div>
+        </div>
+
+        <div class="medicine__card" id="med-3">
+          <div class="medicine__card-header">
+            <span class="medicine__card-emoji">🧬</span>
+            <div>
+              <h3>Ziconotide (Prialt)</h3>
+              <span class="medicine__card-origin">From: Conus magus (Cone Snail)</span>
+            </div>
+          </div>
+          <p>While from a cone snail rather than a snake, this illustrates venom-to-drug pipelines. A synthetic ω-conotoxin that blocks <strong>N-type calcium channels</strong> in spinal neurons. Used for severe chronic pain in patients who don't respond to opioids — 1,000× more potent than morphine without addiction risk.</p>
+          <div class="medicine__card-impact">
+            <span class="impact-label">Impact:</span> Non-addictive alternative to opioid painkillers
+          </div>
+        </div>
+
+        <div class="medicine__card" id="med-4">
+          <div class="medicine__card-header">
+            <span class="medicine__card-emoji">🛡️</span>
+            <div>
+              <h3>Antivenom Production</h3>
+              <span class="medicine__card-origin">Developed since 1895</span>
+            </div>
+          </div>
+          <p>The primary treatment for envenomation. Produced by <strong>hyperimmunizing horses or sheep</strong> with sub-lethal doses of venom, then collecting and purifying the antibodies (IgG). Modern antivenoms use F(ab')₂ or Fab fragments to reduce allergic reactions. Next-gen approaches include <strong>recombinant human antibodies</strong>.</p>
+          <div class="medicine__card-impact">
+            <span class="impact-label">Impact:</span> Saves an estimated 100,000+ lives annually
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================== REFERENCES / FOOTER ======================== -->
+  <footer id="footer" class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <a href="#" class="nav__logo">
+            <span class="nav__logo-icon">🧬</span>
+            <span class="nav__logo-text">Snake Venom</span>
+          </a>
+          <p class="footer__tagline">A Chemistry project exploring the molecular science behind snake venom.</p>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>Sections</h4>
+            <a href="#overview">Overview</a>
+            <a href="#composition">Composition</a>
+            <a href="#models">3D Models</a>
+            <a href="#mechanism">Mechanism</a>
+            <a href="#medicine">Medical Uses</a>
+          </div>
+          <div class="footer__col">
+            <h4>Data Sources</h4>
+            <a href="https://www.rcsb.org/" target="_blank" rel="noopener">RCSB Protein Data Bank</a>
+            <a href="https://www.uniprot.org/" target="_blank" rel="noopener">UniProt</a>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed</a>
+          </div>
+          <div class="footer__col">
+            <h4>References</h4>
+            <a href="https://doi.org/10.1146/annurev-biochem-011510-135646" target="_blank" rel="noopener">Casewell et al., 2013</a>
+            <a href="https://doi.org/10.1038/nrd3011" target="_blank" rel="noopener">King, 2011</a>
+            <a href="https://doi.org/10.1016/j.toxicon.2009.11.004" target="_blank" rel="noopener">Kang et al., 2011</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Snake Venom Chemistry Project. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
